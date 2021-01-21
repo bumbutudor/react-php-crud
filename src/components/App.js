@@ -1,16 +1,18 @@
 import React,{Component} from 'react';
-import UsersList from './UsersList';
-import AddUser from './AddUser';
+// import UsersList from './UsersList';
+import WordList from './WordList';
+// import AddUser from './AddUser';
+import AddWord from './AddWord';
 import {Provider} from './Context';
 class App extends Component {
     state = {
         post_found:true,
-        new_user:false
+        new_word:false
     }
-    addNewUser = (id,name,email) => {
+    addNewWord = (id,cuvant,predefinitie,definitie) => {
         if(this.state.post_found){
             this.setState({
-                new_user:{id:id,user_name:name,user_email:email}
+                new_word:{id:id,cuvant:cuvant,predefinitie:predefinitie,definitie:definitie}
             });
         }
         else{
@@ -29,50 +31,51 @@ class App extends Component {
     
     render(){
         const contextValue = {
-            new_user:this.state.new_user,
-            addNewUser:this.addNewUser,
+            new_word:this.state.new_word,
+            addNewWord:this.addNewWord,
             post_show:this.postShow
         }
 
-        let showUsers;
+        let showWords;
         if(this.state.post_found){
-            showUsers = (
+            showWords = (
                 <table className="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
+                            <th>Cuvânt</th>
+                            <th>Predefiniție</th>
+                            <th>Definiție</th>
+                            <th>Acțiuni</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <UsersList/>
+                        <WordList/>
                     </tbody>
                 </table>
             );
         }
         else{
-            showUsers = (
+            showWords = (
                 <div className="alert alert-light" role="alert">
-                    <h4 className="alert-heading">No User Found!</h4>
+                    <h4 className="alert-heading">Nu am găsit niciun cuvânt în dicționar.</h4>
                     <hr/>
-                    <p>Please Insert Some Users.</p>
+                    <p>Vă rugăm să le adăugați.</p>
                 </div>
             );
         }
         return (
             <Provider value={contextValue}>
-            <div className="container-fluid bg-light">
+            <div className="container-fluid">
             <div className="container p-5">
                 <div className="card shadow-sm">
-                    <h1 className="card-header text-center text-uppercase text-muted">React PHP CRUD Application</h1>
+                    <h1 className="card-header text-center text-muted">Gestionare dicționar</h1>
                     <div className="card-body">
                         <div className="row">
-                            <div className="col-md-4">
-                                <AddUser/>
+                            <div className="col-md-12">
+                                <AddWord/>
                             </div>
-                            <div className="col-md-8">
-                                {showUsers}
+                            <div className="col-md-12">
+                                {showWords}
                             </div>
                         </div>
                     </div>
