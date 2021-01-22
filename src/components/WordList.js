@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
 import {AppContext} from './Context';
-class UsersList extends Component{
+
+class WordList extends Component{
     static contextType = AppContext;   
     
     state = {
@@ -95,26 +96,26 @@ class UsersList extends Component{
     }
 
     handleDelete = (id) => {
-        // let deleteUser = this.state.users.filter(user => {
-        //     return user.id !== id;
-        // });
+        let deleteWord = this.state.words.filter(cuvant => {
+            return cuvant.id !== id;
+        });
         
-        // Axios.post('http://localhost/php-react/delete-user.php',{
-        //     id:id
-        // })
-        // .then(({data}) => {
-        //     if(data.success === 1){
-        //         this.setState({
-        //             users:deleteUser
-        //         });
-        //     }
-        //     else{
-        //         alert(data.msg);
-        //     }
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
+        Axios.post('http://localhost/php-react/delete-word.php',{
+            id:id
+        })
+        .then(({data}) => {
+            if(data.success === 1){
+                this.setState({
+                    words:deleteWord
+                });
+            }
+            else{
+                alert(data.msg);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     componentDidUpdate(){
@@ -138,8 +139,8 @@ class UsersList extends Component{
             return isEditing === true ? (   
             <tr key={id}>
                 <td><input className="form-control" type="text" ref={(item) => this.name = item} defaultValue={cuvant}/></td>
-                <td><input className="form-control" type="email" ref={(item) => this.email = item} defaultValue={predefinitie}/></td>
-                <td><input className="form-control" type="email" ref={(item) => this.email = item} defaultValue={definitie}/></td>
+                <td><input className="form-control" type="predefinitie" ref={(item) => this.predefinitie = item} defaultValue={predefinitie}/></td>
+                <td><input className="form-control" type="definitie" ref={(item) => this.definitie = item} defaultValue={definitie}/></td>
                 <td>
                     <button className="btn btn-success mr-2" onClick={() => this.handleUpdate(id)}>Salvează</button>
                     <button onClick={() => this.cancleEdit(id)} className="btn btn-light">Nu salva</button>
@@ -170,4 +171,4 @@ class UsersList extends Component{
     }
 }
 
-export default UsersList;
+export default WordList;

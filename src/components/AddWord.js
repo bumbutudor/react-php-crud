@@ -36,15 +36,15 @@ export default class AddWord extends Component{
             <div className="form-row">
                 <div className="form-group col-sm-2">
                     <label className="font-weight-bold">Cuvânt</label>
-                    <input type="text" name="cuvant" ref={(val) => this.cuvant = val} className="form-control" placeholder=""/>
+                    <input type="text" name="cuvant" ref={(val) => this.cuvant = val} className="form-control" placeholder="Scrieți cuvântul"/>
                 </div>
                 <div className="form-group col-sm-4">
                     <label className="font-weight-bold">Predefiniție</label>
-                    <textarea rows="1" name="predefinitie" ref={(val) => this.predefinitie = val} className="form-control" placeholder=""></textarea>
+                    <textarea rows="1" name="predefinitie" ref={(val) => this.predefinitie = val} className="form-control" placeholder="Aici veți introduce pre-definiția"></textarea>
                 </div>
                 <div className="form-group col-sm-6">
                     <label className="font-weight-bold">Definiție</label>
-                    <textarea rows="1" name="definitie" ref={(val) => this.definitie = val} className="form-control" placeholder=""></textarea>
+                    <textarea rows="1" name="definitie" ref={(val) => this.definitie = val} className="form-control" placeholder="Aici definiția cuvântului"></textarea>
                 </div>
                 <div className="form-group col-sm-12 text-right">
                     <button type="submit" className="btn btn-primary">Adaugă</button>
