@@ -17,7 +17,7 @@ export default class AddWord extends Component{
             if(data.success === 1){
                 this.context.addNewWord(data.id,this.cuvant.value,this.predefinitie.value,this.definitie.value);
                 event.target.reset();
-                alert(data.msg);
+                // alert(data.msg);
             }
             else{
                 alert(data.msg);  

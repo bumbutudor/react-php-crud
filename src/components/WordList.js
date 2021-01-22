@@ -153,8 +153,8 @@ class WordList extends Component{
                     <td><span>{predefinitie}</span></td>
                     <td>{definitie}</td>
                     <td>
-                        <button className="btn btn-dark mr-2" onClick={() => this.editMode(id)}>Modifică</button>
-                        <button onClick={() => this.handleDelete(id)} className="btn btn-danger">Șterge</button>
+                        <button className="btn btn-dark mr-2 btn-sm mb-1" onClick={() => this.editMode(id)}>Modifică</button>
+                        <button onClick={() => this.handleDelete(id)} className="btn btn-danger btn-sm">Șterge</button>
                     </td>
                 </tr>
             );
